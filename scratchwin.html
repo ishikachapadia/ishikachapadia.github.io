@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch & Win — ISHICHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+	--paper:  #F1EDE4;
+	--ink:    #0E0D0A;
+	--accent: #C5F200;
+	--muted:  #928E87;
+	--B:      2px solid var(--ink);
+	--sans:   'Unbounded',sans-serif;
+	--serif:  'DM Serif Display',Georgia,serif;
+	--body:   'Manrope',sans-serif;
+	--ease:   cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:stretch;background:rgba(14,13,10,.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(241,237,228,.08);}
+.nlogo{display:flex;align-items:center;padding:0 32px;border-right:1px solid rgba(241,237,228,.1);font-family:var(--sans);font-size:.85rem;font-weight:700;letter-spacing:.06em;color:var(--paper);text-decoration:none;}
+.nlogo b{color:var(--accent);}
+.nlinks{display:flex;margin:0 auto;}
+.nlinks a{position:relative;display:flex;align-items:center;padding:0 22px;font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#C5F200;text-decoration:none;border-left:1px solid rgba(241,237,228,.06);transition:color .25s var(--ease);}
+.nlinks a::after{content:'';position:absolute;left:18px;right:18px;bottom:14px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+.nlinks a:hover{color:var(--paper);}
+.nlinks a:hover::after{transform:scaleX(1);}
+.nright{display:flex;align-items:center;gap:10px;padding:0 18px 0 16px;border-left:1px solid rgba(241,237,228,.1);}
+.ndot{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite;}
+.ntxt{font-family:var(--sans);font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(241,237,228,.72);}
+.nresume{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 12px;font-family:var(--sans);font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(241,237,228,.28);color:var(--paper);transition:border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
+.nresume:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+.ncta{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;font-family:var(--sans);font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--ink);border:1.5px solid var(--accent);transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s,color .2s;}
+.ncta:hover{background:transparent;color:var(--accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(197,242,0,.35);}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+.proj-hero{padding-top:64px;min-height:80vh;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;position:relative;border-bottom:var(--B);}
+.proj-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,13,10,0) 0%,rgba(14,13,10,.68) 100%);}
+.proj-hero-content{position:relative;z-index:1;text-align:center;color:var(--paper);padding:0 40px;}
+.proj-hero-tag{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.proj-hero-title{font-family:var(--sans);font-size:clamp(2.4rem,8vw,5.8rem);font-weight:900;letter-spacing:-.04em;line-height:.9;}
+.proj-hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2.5vw,1.8rem);font-weight:400;margin-top:16px;color:rgba(241,237,228,.86);}
+
+.back-wrap{padding:40px 52px;border-bottom:1px solid rgba(14,13,10,.08);display:flex;justify-content:flex-start;align-items:center;gap:10px;flex-wrap:wrap;}
+.back-link,.project-live-top{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:44px;padding:0 18px;text-decoration:none;font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border:2px solid var(--ink);position:relative;overflow:hidden;isolation:isolate;transition:color .25s var(--ease),transform .22s var(--ease),box-shadow .22s var(--ease),border-color .25s var(--ease);}
+.back-link::before,.project-live-top::before{content:'';position:absolute;inset:0;background:var(--accent);transform:translateX(-101%);transition:transform .3s var(--ease);z-index:0;}
+.back-link .txt,.back-link .arr,.project-live-top .txt,.project-live-top .arr{position:relative;z-index:1;}
+.back-link .arr,.project-live-top .arr{display:inline-block;transition:transform .25s var(--ease);}
+
+.back-link{color:var(--ink);background:transparent;}
+.back-link:hover{color:var(--ink);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(14,13,10,.16);}
+.back-link:hover::before{transform:translateX(0);}
+.back-link:hover .arr{transform:translate(-2px,0);}
+
+.project-live-top{color:var(--paper);background:var(--ink);}
+.project-live-top:hover{color:var(--ink);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(14,13,10,.24);}
+.project-live-top:hover::before{transform:translateX(0);}
+.project-live-top:hover .arr{transform:translate(2px,-2px);}
+
+.section{padding:80px 52px;border-bottom:var(--B);}
+.section-head{margin-bottom:56px;}
+.section-label{font-family:var(--sans);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#5f5b55;margin-bottom:14px;}
+.section-title{font-family:var(--sans);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.95;}
+
+.overview{display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:start;}
+.overview-text{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.55rem);font-weight:400;line-height:1.8;letter-spacing:.005em;color:rgba(14,13,10,.85);}
+.overview-text p+p{margin-top:18px;}
+.overview-meta{display:flex;flex-direction:column;gap:30px;}
+.meta-block{border-top:1px solid rgba(14,13,10,.12);padding-top:20px;}
+.meta-label{font-family:var(--sans);font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#5f5b55;margin-bottom:8px;}
+.meta-val{font-family:var(--serif);font-style:italic;font-size:1.35rem;font-weight:400;color:var(--ink);line-height:1.4;}
+
+.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:38px;margin-top:46px;}
+.process-step{border:1.5px solid rgba(14,13,10,.1);padding:36px;background:var(--paper);transition:background .3s,border-color .3s;}
+.process-step:hover{background:rgba(197,242,0,.08);border-color:var(--accent);}
+.step-num{font-family:var(--sans);font-size:2.4rem;font-weight:900;color:var(--ink);line-height:.8;margin-bottom:14px;}
+.step-title{font-family:var(--sans);font-size:1.08rem;font-weight:700;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:12px;color:var(--ink);}
+.step-desc{font-family:var(--body);font-size:.95rem;font-weight:400;line-height:1.7;color:rgba(14,13,10,.78);}
+
+.problem-solution{display:grid;grid-template-columns:1fr 1fr;gap:62px;}
+.ps-block{border-left:3px solid transparent;padding-left:28px;}
+.ps-block.problem{border-left-color:#0E0D0A;}
+.ps-block.solution{border-left-color:var(--accent);}
+.ps-label{font-family:var(--sans);font-size:.6rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px;color:#0E0D0A;}
+.ps-title{font-family:var(--sans);font-size:1.75rem;font-weight:900;letter-spacing:-.02em;margin-bottom:18px;line-height:1.2;}
+.ps-text{font-family:var(--body);font-size:1rem;font-weight:400;line-height:1.8;color:rgba(14,13,10,.8);}
+.ps-list{list-style:none;margin-top:18px;}
+.ps-list li{margin-bottom:11px;padding-left:24px;position:relative;font-size:.95rem;line-height:1.6;color:rgba(14,13,10,.8);}
+.ps-list li::before{content:'→';position:absolute;left:0;color:var(--muted);font-weight:700;}
+
+.tech-stack{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;}
+.tech-badge{font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--accent);padding:10px 18px;border:1px solid var(--ink);}
+
+.proj-cta{background:var(--ink);color:var(--paper);padding:80px 52px;text-align:center;border-bottom:var(--B);}
+.cta-text{font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;margin-bottom:30px;line-height:1.4;}
+.cta-btn{display:inline-block;font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:var(--ink);padding:16px 44px;text-decoration:none;border:1.5px solid var(--accent);}
+
+footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 28px;border-top:var(--B);}
+.fl{font-family:var(--sans);font-size:.55rem;font-weight:700;letter-spacing:.1em;color:rgba(241,237,228,.45);}
+.fc{font-family:var(--sans);font-size:.46rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,237,228,.35);text-align:center;}
+.fr{display:flex;justify-content:flex-end;}
+.fr a{text-decoration:none;font-family:var(--sans);font-size:.48rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(241,237,228,.45);padding:8px 16px;border-left:1px solid rgba(241,237,228,.12);transition:color .2s;}
+.fr a:hover{color:var(--accent);}
+
+@media(max-width:960px){
+	.section{padding:60px 28px;}
+	.overview{grid-template-columns:1fr;gap:40px;}
+	.problem-solution{grid-template-columns:1fr;}
+	.back-wrap{padding:32px 28px;}
+}
+@media(max-width:640px){
+	.nlinks{display:none;}
+	.nlogo{padding:0 18px;font-size:.74rem;}
+	.nright{margin-left:auto;padding:0 14px;}
+	.ntxt{display:none;}
+	.nresume{height:32px;padding:0 9px;font-size:.46rem;}
+	.ncta{height:32px;padding:0 10px;font-size:.48rem;}
+	.section{padding:40px 20px;}
+	.proj-hero{min-height:60vh;}
+	.process{grid-template-columns:1fr;}
+	footer{grid-template-columns:1fr;gap:8px;}
+	.fr,.fc{justify-content:flex-start;text-align:left;}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DK1DBWE0DG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DK1DBWE0DG');
+</script>
+</head>
+<body>
+
+<nav>
+	<a href="./index.html" class="nlogo">ISHI<b>CHA</b></a>
+	<div class="nlinks">
+		<a href="./index.html">Work</a>
+		<a href="./index.html#contact">Contact</a>
+		<a href="./index.html#skills">Skills</a>
+		<a href="./index.html#about">About</a>
+	</div>
+	<div class="nright">
+		<a href="assets/resume.pdf" class="nresume" target="_blank" rel="noopener noreferrer">Resume</a>
+		<a href="./index.html#contact" class="ncta">Start Project</a>
+	</div>
+</nav>
+
+<section class="proj-hero" style="background-image: url('assets/img/scratchwin.png')">
+</section>
+
+<section class="back-wrap">
+	<a href="https://ishikachapadia.github.io/buymore-scratch/" target="_blank" rel="noopener noreferrer" class="project-live-top"><span class="txt">View Live Project</span><span class="arr">↗</span></a>
+    <a href="https://github.com/ishikachapadia/buymore-scratch" target="_blank" rel="noopener noreferrer" class="back-link"><span class="txt">View Code</span><span class="arr">↗</span></a>
+	<a href="./index.html" class="back-link"><span class="arr">←</span><span class="txt">Back to Work</span></a>
+</section>
+
+<section class="section">
+	<div class="section-head">
+		<div class="section-label">01 — Project Overview</div>
+		<h2 class="section-title">The Vision</h2>
+	</div>
+	<div class="overview">
+		<div class="overview-text">
+			<p>Scratch & Win is an interactive digital campaign experience where users reveal rewards through tactile, game-like interactions. The challenge was to make it feel playful and instant while keeping the flow frictionless across devices.</p>
+			<p>The focus was on balancing visual excitement with strong UX clarity, so users always understand where to tap, what they won, and what action comes next.</p>
+		</div>
+		<div class="overview-meta">
+			<div class="meta-block"><div class="meta-label">Timeline</div><div class="meta-val">6 weeks</div></div>
+			<div class="meta-block"><div class="meta-label">Deliverables</div><div class="meta-val">Campaign UX, UI Screens, Front-End Build</div></div>
+			<div class="meta-block"><div class="meta-label">Role</div><div class="meta-val">Design + Development</div></div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="section-head">
+		<div class="section-label">02 — Development Process</div>
+		<h2 class="section-title">From Wireframe to Launch</h2>
+	</div>
+	<div class="process">
+		<div class="process-step"><div class="step-num">01</div><div class="step-title">Flow Mapping</div><div class="step-desc">Defined campaign states from entry to reward claim and reduced user drop-off points.</div></div>
+		<div class="process-step"><div class="step-num">02</div><div class="step-title">Interaction Design</div><div class="step-desc">Designed scratch mechanics, reveal timing, and reward confirmation interactions.</div></div>
+		<div class="process-step"><div class="step-num">03</div><div class="step-title">Visual Direction</div><div class="step-desc">Built a high-energy visual style that supports quick comprehension and clear CTA hierarchy.</div></div>
+		<div class="process-step"><div class="step-num">04</div><div class="step-title">Build & QA</div><div class="step-desc">Implemented responsive behavior and tested edge cases across mobile browsers and touch states.</div></div>
+		<div class="process-step"><div class="step-num">05</div><div class="step-title">Optimization</div><div class="step-desc">Refined animation pacing and asset loading to keep interactions smooth on slower devices.</div></div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="section-head">
+		<div class="section-label">03 — Problem & Solution</div>
+		<h2 class="section-title">The Challenge</h2>
+	</div>
+	<div class="problem-solution">
+		<div class="ps-block problem">
+			<div class="ps-label">The Challenge</div>
+			<h3 class="ps-title">Fun Interaction Without User Confusion</h3>
+			<p class="ps-text">Campaign-based mini experiences often look flashy but fail at clarity. Users can get confused about whether they won, where to continue, or how to redeem rewards.</p>
+			<ul class="ps-list">
+				<li>Ambiguous scratch-state feedback</li>
+				<li>Inconsistent reward reveal moments</li>
+				<li>Poor mobile touch performance</li>
+				<li>Weak post-win conversion flow</li>
+			</ul>
+		</div>
+		<div class="ps-block solution">
+			<div class="ps-label">Our Solution</div>
+			<h3 class="ps-title">A Clear, Reward-First Interaction Model</h3>
+			<p class="ps-text">We created a strict interaction sequence where users always understand status, reward outcome, and next action.</p>
+			<ul class="ps-list">
+				<li>Progressive reveal states with immediate feedback</li>
+				<li>Strong reward confirmation UI and motion cues</li>
+				<li>Touch-optimized scratch behavior for mobile</li>
+				<li>Clear conversion CTA after each reveal</li>
+			</ul>
+		</div>
+	</div>
+
+	<div style="margin-top:42px;border-top:1px solid rgba(14,13,10,.1);padding-top:34px;">
+		<p style="font-family:var(--serif);font-style:italic;font-size:1.1rem;line-height:1.8;color:rgba(14,13,10,.75);margin-bottom:22px;">
+			Scratch & Win shows that campaign interactivity performs best when delight and clarity are treated as a single system, not separate goals.
+		</p>
+		<div class="tech-stack">
+			<div class="tech-badge">JavaScript</div>
+			<div class="tech-badge">Canvas Masking</div>
+			<div class="tech-badge">Motion Design</div>
+			<div class="tech-badge">Responsive UI</div>
+			<div class="tech-badge">Campaign UX</div>
+		</div>
+	</div>
+</section>
+
+<section class="proj-cta">
+	<p class="cta-text">Need an interactive campaign experience for your audience?</p>
+	<a href="../1863249811/index.html#contact" class="cta-btn">Get in Touch →</a>
+</section>
+
+<footer>
+	<div class="fl">© 2026 ISHICHA · Creative Engineering</div>
+	<div class="fc">Scratch & Win Case Study</div>
+	<div class="fr"><a href="#">Back to Top ↑</a></div>
+</footer>
+
+<script>
+document.querySelector('a[href="#"]').addEventListener('click',function(e){
+	e.preventDefault();
+	window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+
+</body>
+</html>

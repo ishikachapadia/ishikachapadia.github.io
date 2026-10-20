@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mad Movies Identity — ISHICHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:  #F1EDE4;
+  --ink:    #0E0D0A;
+  --accent: #C5F200;
+  --accent2:#D4FF00;
+  --muted:  #928E87;
+  --B:      2px solid var(--ink);
+  --sans:   'Unbounded',sans-serif;
+  --serif:  'DM Serif Display',Georgia,serif;
+  --body:   'Manrope',sans-serif;
+  --ease:   cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ──────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:stretch;background:rgba(14,13,10,.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(241,237,228,.08);}
+.nlogo{display:flex;align-items:center;padding:0 32px;border-right:1px solid rgba(241,237,228,.1);font-family:var(--sans);font-size:.85rem;font-weight:700;letter-spacing:.06em;color:var(--paper);text-decoration:none;}
+.nlogo b{color:var(--accent);}
+.nlinks{display:flex;margin:0 auto;}
+.nlinks a{position:relative;display:flex;align-items:center;padding:0 22px;font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#C5F200;text-decoration:none;border-left:1px solid rgba(241,237,228,.06);transition:color .25s var(--ease);}
+.nlinks a::after{content:'';position:absolute;left:18px;right:18px;bottom:14px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+.nlinks a:hover{color:var(--paper);}
+.nlinks a:hover::after{transform:scaleX(1);}
+.nright{display:flex;align-items:center;gap:10px;padding:0 18px 0 16px;border-left:1px solid rgba(241,237,228,.1);}
+.ndot{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.ntxt{font-family:var(--sans);font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(241,237,228,.72);}
+.nresume{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 12px;font-family:var(--sans);font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(241,237,228,.28);color:var(--paper);transition:border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
+.nresume:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+.ncta{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;font-family:var(--sans);font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--ink);border:1.5px solid var(--accent);transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s,color .2s;}
+.ncta:hover{background:transparent;color:var(--accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(197,242,0,.35);}
+
+/* ── HERO IMAGE ──────────── */
+.proj-hero{
+  padding-top:64px;
+  min-height:80vh;
+  display:flex;align-items:center;justify-content:center;
+  background-size:cover;background-position:center;
+  position:relative;
+  border-bottom:var(--B);
+}
+.proj-hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(14,13,10,0) 0%,rgba(14,13,10,.6) 100%);
+}
+.proj-hero-content{
+  position:relative;z-index:1;
+  text-align:center;color:var(--paper);padding:0 40px;
+}
+.proj-hero-tag{
+  font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
+}
+.proj-hero-title{
+  font-family:var(--sans);font-size:clamp(2.5rem,8vw,6rem);font-weight:900;letter-spacing:-.04em;line-height:.9;
+}
+.proj-hero-sub{
+  font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2.5vw,1.8rem);
+  font-weight:400;margin-top:16px;color:rgba(241,237,228,.7);
+}
+
+/* ── SECTION ──────────────── */
+.section{
+  padding:80px 52px;
+  border-bottom:var(--B);
+}
+.section-head{
+  margin-bottom:56px;
+}
+.section-label{
+  font-family:var(--sans);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;
+}
+.section-title{
+  font-family:var(--sans);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-.03em;
+  text-transform:uppercase;line-height:.95;
+}
+.section-subtitle{
+  font-family:var(--serif);font-style:italic;font-size:1.3rem;font-weight:400;
+  color:rgba(14,13,10,.5);margin-top:12px;
+}
+
+/* ── OVERVIEW ─────────────── */
+.overview{
+  display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:start;
+}
+.overview-text{
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);
+  font-weight:400;line-height:1.8;letter-spacing:.005em;color:rgba(14,13,10,.65);
+}
+.overview-meta{
+  display:flex;flex-direction:column;gap:32px;
+}
+.meta-block{
+  border-top:1px solid rgba(14,13,10,.1);padding-top:20px;
+}
+.meta-label{
+  font-family:var(--sans);font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.meta-val{
+  font-family:var(--serif);font-style:italic;font-size:1.4rem;font-weight:400;
+  color:var(--ink);line-height:1.4;
+}
+
+/* ── PROCESS ──────────────── */
+.process{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;
+  margin-top:48px;
+}
+.process-step{
+  border:1.5px solid rgba(14,13,10,.08);padding:40px;background:var(--paper);
+  transition:background .3s,border-color .3s;
+}
+.process-step:hover{background:rgba(197,242,0,.08);border-color:var(--accent);}
+.step-num{
+  font-family:var(--sans);font-size:2.5rem;font-weight:900;color:#0E0D0A;
+  line-height:.8;margin-bottom:16px;
+}
+.step-title{
+  font-family:var(--sans);font-size:1.1rem;font-weight:700;letter-spacing:-.01em;
+  text-transform:uppercase;margin-bottom:12px;color:var(--ink);
+}
+.step-desc{
+  font-family:var(--body);font-size:.95rem;font-weight:400;line-height:1.7;
+  color:rgba(14,13,10,.55);
+}
+
+/* ── PROBLEM & SOLUTION ────── */
+.problem-solution{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;
+}
+.ps-block{
+  border-left:3px solid transparent;padding-left:28px;transition:border-color .3s;
+}
+.ps-block.problem{border-left-color:#d86030;}
+.ps-block.solution{border-left-color:var(--accent);}
+.ps-label{
+  font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.ps-block.problem .ps-label{color:#0E0D0A;}
+.ps-block.solution .ps-label{color:#0E0D0A;}
+.ps-title{
+  font-family:var(--sans);font-size:1.8rem;font-weight:900;letter-spacing:-.02em;
+  margin-bottom:20px;line-height:1.2;
+}
+.ps-text{
+  font-family:var(--body);font-size:1rem;font-weight:400;line-height:1.8;
+  color:rgba(14,13,10,.6);
+}
+.ps-text strong{color:var(--ink);font-weight:600;}
+.ps-list{
+  list-style:none;margin-top:20px;
+}
+.ps-list li{
+  margin-bottom:12px;padding-left:24px;position:relative;
+  font-size:.95rem;line-height:1.6;color:rgba(14,13,10,.6);
+}
+.ps-list li::before{
+  content:'→';position:absolute;left:0;
+  color:var(--muted);font-weight:700;
+}
+
+/* ── RESULTS & IMPACT ────── */
+.results{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;
+}
+.result-card{
+  text-align:center;padding:32px;background:rgba(197,242,0,.08);border:1.5px solid rgba(197,242,0,.2);
+  transition:transform .3s var(--ease),border-color .3s;
+}
+.result-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.result-num{
+  font-family:var(--sans);font-size:3rem;font-weight:900;color:var(--accent);line-height:.8;
+}
+.result-label{
+  font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-top:16px;
+}
+
+/* ── TECHNOLOGIES ────────── */
+.tech-stack{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;
+}
+.tech-badge{
+  font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--ink);color:var(--accent);padding:10px 18px;
+  border:1px solid var(--ink);transition:all .2s;
+}
+.tech-badge:hover{background:var(--accent);color:var(--ink);border-color:var(--accent);}
+
+/* ── LIVE PROJECT LINK ───────── */
+.project-live-wrap{padding:56px 52px;border-bottom:var(--B);background:rgba(14,13,10,.02);text-align:center;}
+.project-live-title{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.project-live-btn{display:inline-block;font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--accent);padding:14px 28px;border:var(--B);transition:transform .2s var(--ease),box-shadow .2s var(--ease);}
+.project-live-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink);}
+
+/* ── CTA ──────────────────── */
+.proj-cta{
+  background:var(--ink);color:var(--paper);padding:80px 52px;
+  text-align:center;border-bottom:var(--B);
+}
+.cta-text{
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,3vw,2.5rem);
+  font-weight:400;margin-bottom:32px;line-height:1.4;
+}
+.cta-btn{
+  display:inline-block;font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--accent);color:var(--ink);
+  padding:16px 44px;text-decoration:none;border:1.5px solid var(--accent);
+  transition:all .3s var(--ease);position:relative;overflow:hidden;
+}
+.cta-btn::before{
+  content:'';position:absolute;inset:0;background:var(--ink);
+  transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease);z-index:-1;
+}
+.cta-btn:hover{color:var(--accent);transform:translateX(3px);}
+.cta-btn:hover::before{transform:scaleX(1);transform-origin:left;}
+
+/* ── TOP LINK ROW ───────────── */
+.back-wrap{padding:40px 52px;border-bottom:1px solid rgba(14,13,10,.06);display:flex;justify-content:flex-start;align-items:center;gap:10px;flex-wrap:wrap;}
+
+/* ── BACK LINK ────────────── */
+.back-link,.project-live-top{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:44px;padding:0 18px;text-decoration:none;font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border:2px solid var(--ink);position:relative;overflow:hidden;isolation:isolate;transition:color .25s var(--ease),transform .22s var(--ease),box-shadow .22s var(--ease),border-color .25s var(--ease);}
+.back-link::before,.project-live-top::before{content:'';position:absolute;inset:0;background:var(--accent);transform:translateX(-101%);transition:transform .3s var(--ease);z-index:0;}
+.back-link .txt,.back-link .arr,.project-live-top .txt,.project-live-top .arr{position:relative;z-index:1;}
+.back-link .arr,.project-live-top .arr{display:inline-block;transition:transform .25s var(--ease);}
+
+.back-link{color:var(--ink);background:transparent;}
+.back-link:hover{color:var(--ink);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(14,13,10,.16);}
+.back-link:hover::before{transform:translateX(0);}
+.back-link:hover .arr{transform:translate(-2px,0);}
+
+.project-live-top{color:var(--paper);background:var(--ink);}
+.project-live-top:hover{color:var(--ink);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(14,13,10,.24);}
+.project-live-top:hover::before{transform:translateX(0);}
+.project-live-top:hover .arr{transform:translate(2px,-2px);}
+
+/* ── FOOTER ──────────────── */
+footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:20px 28px;border-top:var(--B);}
+.fl{font-family:var(--sans);font-size:.55rem;font-weight:700;letter-spacing:.1em;color:rgba(241,237,228,.28);}
+.fc{font-family:var(--sans);font-size:.46rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,237,228,.18);text-align:center;}
+.fr{display:flex;justify-content:flex-end;}
+.fr a{text-decoration:none;font-family:var(--sans);font-size:.48rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(241,237,228,.22);padding:8px 16px;border-left:1px solid rgba(241,237,228,.06);transition:color .2s;}
+.fr a:hover{color:var(--accent);}
+
+/* ── RESPONSIVE ──────────── */
+@media(max-width:960px){
+  .section{padding:60px 28px;}
+  .overview{grid-template-columns:1fr;gap:40px;}
+  .problem-solution{grid-template-columns:1fr;}
+  .results{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .nlinks{display:none;}
+  .nlogo{padding:0 18px;font-size:.74rem;}
+  .nright{margin-left:auto;padding:0 14px;}
+  .ntxt{display:none;}
+  .nresume{height:32px;padding:0 9px;font-size:.46rem;}
+  .ncta{height:32px;padding:0 10px;font-size:.48rem;}
+  .section{padding:40px 20px;}
+  .proj-hero{min-height:60vh;}
+  .overview-meta{gap:20px;}
+  .section-title{font-size:1.8rem;}
+  .process{grid-template-columns:1fr;}
+  .results{grid-template-columns:1fr;}
+  .back-wrap{padding:28px 20px;}
+  footer{grid-template-columns:1fr;gap:8px;}
+  .fr,.fc{justify-content:flex-start;text-align:left;}
+}
+
+/* ── REVEAL ANIMATION ────── */
+.rv{opacity:0;transform:translateY(24px);animation:reveal .8s cubic-bezier(.16,1,.3,1) both;}
+@keyframes reveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.rv:nth-child(1){animation-delay:.1s}
+.rv:nth-child(2){animation-delay:.2s}
+.rv:nth-child(3){animation-delay:.3s}
+.rv:nth-child(4){animation-delay:.4s}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DK1DBWE0DG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DK1DBWE0DG');
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="./index.html" class="nlogo">ISHI<b>CHA</b></a>
+  <div class="nlinks">
+    <a href="./index.html#projects">Work</a>
+    <a href="./index.html#contact">Contact</a>
+    <a href="./index.html#skills">Skills</a>
+    <a href="./index.html#about">About</a>
+  </div>
+  <div class="nright">
+    <a href="assets/resume.pdf" class="nresume" target="_blank" rel="noopener noreferrer">Resume</a>
+    <a href="./index.html#contact" class="ncta">Start Project</a>
+  </div>
+</nav>
+
+<!-- HERO IMAGE -->
+<section class="proj-hero" style="background-image: url('assets/img/madmovies.png')">
+</section>
+
+<!-- HEADER BACK LINK -->
+<section class="back-wrap">
+  <a href="https://ishikachapadia.github.io/cineview/" target="_blank" rel="noopener noreferrer" class="project-live-top"><span class="txt">View Live Project</span><span class="arr">↗</span></a>
+    <a href="https://github.com/ishikachapadia/cineview" target="_blank" rel="noopener noreferrer" class="back-link"><span class="txt">View Code</span><span class="arr">↗</span></a>
+  <a href="./index.html" class="back-link"><span class="arr">←</span><span class="txt">Back to Work</span></a>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section rv">
+  <div class="section-head">
+    <div class="section-label">01 — Project Overview</div>
+    <h2 class="section-title">The Vision</h2>
+  </div>
+  <div class="overview">
+    <div class="overview-text">
+      <p>Mad Movies is an entertainment-focused editorial platform that celebrates cinema, culture, and creative storytelling. The challenge was to create a brand identity that felt bold, energetic, and distinctly memorable—something that could stand out in a crowded digital landscape while maintaining a sophisticated editorial presence.</p>
+      <p style="margin-top:20px;">The solution combines rich typography, dynamic color systems, and interactive motion design to create an identity that's as engaging as the content itself.</p>
+    </div>
+    <div class="overview-meta">
+      <div class="meta-block">
+        <div class="meta-label">Timeline</div>
+        <div class="meta-val">12 weeks</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Deliverables</div>
+        <div class="meta-val">Brand Guidelines, Web Design, Interactive Prototype</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Role</div>
+        <div class="meta-val">Lead Designer & Developer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section rv">
+  <div class="section-head">
+    <div class="section-label">02 — Development Process</div>
+    <h2 class="section-title">From Concept to Reality</h2>
+  </div>
+  <div class="process">
+    <div class="process-step rv">
+      <div class="step-num">01</div>
+      <div class="step-title">Research & Strategy</div>
+      <div class="step-desc">Deep dive into competitor analysis, audience research, and brand positioning. Identified key market opportunities and unique brand voice.</div>
+    </div>
+    <div class="process-step rv">
+      <div class="step-num">02</div>
+      <div class="step-title">Design System</div>
+      <div class="step-desc">Developed comprehensive brand guidelines including logo variations, typography scales, color systems, and component library.</div>
+    </div>
+    <div class="process-step rv">
+      <div class="step-num">03</div>
+      <div class="step-title">Web Implementation</div>
+      <div class="step-desc">Designed and coded high-fidelity website showcasing the brand through interactive experiences and motion design.</div>
+    </div>
+    <div class="process-step rv">
+      <div class="step-num">04</div>
+      <div class="step-title">Motion & Animation</div>
+      <div class="step-desc">Created smooth micro-interactions and page transitions using GSAP for enhanced user engagement.</div>
+    </div>
+    <div class="process-step rv">
+      <div class="step-num">05</div>
+      <div class="step-title">Launch & Iteration</div>
+      <div class="step-desc">Deployed with monitoring, collected user feedback, and made iterative refinements based on performance data.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM & SOLUTION -->
+<section class="section rv">
+  <div class="section-head">
+    <div class="section-label">03 — Problem & Solution</div>
+    <h2 class="section-title">The Challenge</h2>
+  </div>
+  <div class="problem-solution">
+    <div class="ps-block problem">
+      <div class="ps-label">The Challenge</div>
+      <h3 class="ps-title">Standing Out in Entertainment</h3>
+      <p class="ps-text">The entertainment media space is saturated with generic, uninspired designs. Platforms compete primarily on content, not on the experience architecture. Mad Movies needed:</p>
+      <ul class="ps-list">
+        <li><strong>Visual Distinctiveness</strong> — A look that immediately signals quality and innovation</li>
+        <li><strong>Emotional Connection</strong> — Brand personality that resonates with film enthusiasts</li>
+        <li><strong>Technical Excellence</strong> — Performance and accessibility without sacrificing design ambition</li>
+        <li><strong>Scalability</strong> — A system flexible enough for growth across platforms</li>
+      </ul>
+    </div>
+    <div class="ps-block solution">
+      <div class="ps-label">Our Solution</div>
+      <h3 class="ps-title">A Dynamic Identity System</h3>
+      <p class="ps-text">We built a brand system that combines human-scale typography with cutting-edge web interactions:</p>
+      <ul class="ps-list">
+        <li><strong>Custom Typography</strong> — Paired serif/sans combo for editorial credibility</li>
+        <li><strong>Color Dynamics</strong> — Adaptive color system linked to content themes</li>
+        <li><strong>Motion Language</strong> — Consistent animation vocabulary across touchpoints</li>
+        <li><strong>Component Library</strong> — Reusable design patterns for rapid development</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="proj-cta">
+  <p class="cta-text">Interested in working together on your next project?</p>
+  <a href="../1863249811/index.html#contact" class="cta-btn">Get in Touch →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">© 2026 ISHICHA · Creative Engineering</div>
+  <div class="fc">Mad Movies Case Study</div>
+  <div class="fr">
+    <a href="#">Back to Top ↑</a>
+  </div>
+</footer>
+
+<script>
+document.querySelector('a[href="#"]').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+
+</body>
+</html>
