@@ -1,0 +1,114 @@
+*, 
+*:before, 
+*:after{
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px; /* this is 1 rem */
+}
+body{
+    margin: 0;
+    padding:0;
+    background-color: papayawhip;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+body > header {
+    width: 100%;
+    height: 4.0rem;
+    background-color: crimson;
+    position: fixed;
+    color: white;
+}
+    
+.header-container {
+    width: 60.0rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.header-container > div {
+    height: 4.0rem;
+    line-height: 4.0rem;
+}
+
+main {
+    padding-top: 5.0rem;
+    width: 60.0rem;
+    margin: 0 auto;
+}
+
+.home-page {
+    background-color: rgb(239, 148, 30);
+    /* height: 30.0rem; */
+    /* width: 60.0rem;*/
+    /* margin: 0 auto; */
+    padding: 2.0rem;
+}
+
+.project-page {
+    background-color: burlywood;
+    height: 30.0rem;
+    /* width: 60.0rem;*/
+    margin: 0 auto;
+}
+
+.project-container {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap;  
+}
+
+.project-card {
+    background-color: aquamarine;
+    padding: 1.0rem 0;
+    min-height: 16.0rem;
+    margin-top: 2.0rem;
+    width: 31.5%;
+}
+
+.project-page img {
+    width: 100%;
+}
+
+.hideAll, .response-container {
+    display: none;
+}
+
+#skills, #aboutMe {
+    height: 30.0rem;
+    background-color: cornflowerblue;
+    margin-bottom: 3.0rem;
+}
+
+#portfolio, #contactMe, #skills, #aboutMe {
+    scroll-margin-top: 6.0rem;
+}
+
+
+
+@media print, screen and (max-width: 40em) {
+    
+    .header-container, main {
+        width: 100%;
+    }
+
+    .project-container {
+        justify-content: center; 
+        
+    }
+
+    .project-card {
+        background-color: rebeccapurple;
+        /* min-height: 16.0rem; */
+        margin-top: 2.0rem;
+        width: 90%;
+    }
+
+}
