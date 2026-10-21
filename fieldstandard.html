@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Field Standard — ISHICHA</title>
+<title>Field Standard · Easy Groceries — ISHICHA</title>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -165,9 +165,9 @@ footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;ali
 
 <section class="proj-hero" style="background-image: url('assets/img/fieldstandard.png')">
 	<div class="proj-hero-content">
-		<div class="proj-hero-tag">Type System / UI</div>
-		<h1 class="proj-hero-title">Field Standard</h1>
-		<p class="proj-hero-sub">A modular interface standard for complex internal workflows</p>
+		<div class="proj-hero-tag">Full-Stack / PHP · MySQL</div>
+		<h1 class="proj-hero-title">Field Standard — Easy Groceries</h1>
+		<p class="proj-hero-sub">A full-stack online grocery store: single-page storefront, accounts, cart, and a PHP/MySQL service layer</p>
 	</div>
 </section>
 
@@ -183,13 +183,13 @@ footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;ali
 	</div>
 	<div class="overview">
 		<div class="overview-text">
-			<p>Field Standard is a UI system designed for teams that run high-volume operations and need consistency across dashboards, forms, and decision-heavy workflows. The objective was to replace fragmented interface patterns with one coherent standard that improves speed, clarity, and onboarding.</p>
-			<p>The final system combines strict visual rhythm, reusable components, and clear interaction states so every screen feels predictable and fast to use.</p>
+			<p>Field Standard is Easy Groceries, a working online grocery store I built end to end: a single-page storefront where customers browse departments, view products, and check out with a persistent cart, backed by a PHP/MySQL service layer I wrote from scratch.</p>
+			<p>The backend is a core PHP class using PDO for catalogue queries, account creation, and login, with JSON endpoints for departments, products, and accounts. Passwords are stored with salted, peppered hashing, and the whole catalogue lives in a relational MySQL schema covering users, departments, and products.</p>
 		</div>
 		<div class="overview-meta">
-			<div class="meta-block"><div class="meta-label">Timeline</div><div class="meta-val">10 weeks</div></div>
-			<div class="meta-block"><div class="meta-label">Deliverables</div><div class="meta-val">Design System, UI Kit, Front-End Library</div></div>
-			<div class="meta-block"><div class="meta-label">Role</div><div class="meta-val">Product Designer / Front-End Dev</div></div>
+			<div class="meta-block"><div class="meta-label">Stack</div><div class="meta-val">PHP (PDO), MySQL, JavaScript</div></div>
+			<div class="meta-block"><div class="meta-label">Deliverables</div><div class="meta-val">Single-Page Storefront, PHP Service Layer, MySQL Schema</div></div>
+			<div class="meta-block"><div class="meta-label">Role</div><div class="meta-val">Full-Stack Developer</div></div>
 		</div>
 	</div>
 </section>
@@ -197,14 +197,14 @@ footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;ali
 <section class="section">
 	<div class="section-head">
 		<div class="section-label">02 — Development Process</div>
-		<h2 class="section-title">From Audit to Rollout</h2>
+		<h2 class="section-title">How It Was Built</h2>
 	</div>
 	<div class="process">
-		<div class="process-step"><div class="step-num">01</div><div class="step-title">UI Audit</div><div class="step-desc">Mapped every existing pattern, duplicate component, and inconsistent behavior across product surfaces.</div></div>
-		<div class="process-step"><div class="step-num">02</div><div class="step-title">Token System</div><div class="step-desc">Defined spacing, typography, color, and state tokens to build consistency from the foundation up.</div></div>
-		<div class="process-step"><div class="step-num">03</div><div class="step-title">Component Architecture</div><div class="step-desc">Built scalable component primitives for table-heavy and form-heavy views.</div></div>
-		<div class="process-step"><div class="step-num">04</div><div class="step-title">Pattern Documentation</div><div class="step-desc">Wrote usage rules, edge-case notes, and accessibility guidance for each component family.</div></div>
-		<div class="process-step"><div class="step-num">05</div><div class="step-title">Implementation</div><div class="step-desc">Integrated the system in production screens with staged rollout and visual QA checkpoints.</div></div>
+		<div class="process-step"><div class="step-num">01</div><div class="step-title">Database Schema</div><div class="step-desc">Designed the MySQL schema for users, departments, and products so the catalogue has one source of truth.</div></div>
+		<div class="process-step"><div class="step-num">02</div><div class="step-title">Service Layer</div><div class="step-desc">Wrote the PHP/PDO backend class and JSON endpoints for departments, products, and accounts.</div></div>
+		<div class="process-step"><div class="step-num">03</div><div class="step-title">Storefront</div><div class="step-desc">Built the single-page storefront: home, shop by department, product views, and a persistent cart.</div></div>
+		<div class="process-step"><div class="step-num">04</div><div class="step-title">Accounts &amp; Login</div><div class="step-desc">Added sign up, log in, and forgot password flows with salted, peppered password hashing.</div></div>
+		<div class="process-step"><div class="step-num">05</div><div class="step-title">Testing</div><div class="step-desc">Checked the full flow end to end: browsing, cart, account creation, and login across browsers.</div></div>
 	</div>
 </section>
 
@@ -216,24 +216,24 @@ footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;ali
 	<div class="problem-solution">
 		<div class="ps-block problem">
 			<div class="ps-label">The Challenge</div>
-			<h3 class="ps-title">Inconsistent UI Slowing Teams Down</h3>
-			<p class="ps-text">The product had grown quickly, but interface logic and visual rules were inconsistent between modules. Teams faced unnecessary friction every day.</p>
+			<h3 class="ps-title">A Storefront With No Backend</h3>
+			<p class="ps-text">A grocery store is only real when the data is: hundreds of products, departments, prices, and customer accounts that change independently of the pages showing them.</p>
 			<ul class="ps-list">
-				<li>Different form behavior between similar pages</li>
-				<li>Unclear hierarchy in dense data tables</li>
-				<li>Slow onboarding for new team members</li>
-				<li>High maintenance cost for front-end updates</li>
+				<li>Product data hard-coded in pages goes stale fast</li>
+				<li>No accounts, login, or saved carts</li>
+				<li>No single source of truth for the catalogue</li>
+				<li>Every price or product change means editing HTML</li>
 			</ul>
 		</div>
 		<div class="ps-block solution">
 			<div class="ps-label">Our Solution</div>
-			<h3 class="ps-title">A Systematic, Reusable Standard</h3>
-			<p class="ps-text">We introduced a production-ready design and code system that aligned behavior, layout, and visual logic across the full product.</p>
+			<h3 class="ps-title">A Small, Honest Full Stack</h3>
+			<p class="ps-text">I built the whole stack myself: a relational database, a PHP service layer exposing JSON, and a single-page front end that talks to it.</p>
 			<ul class="ps-list">
-				<li>Reusable components with strict state patterns</li>
-				<li>Token-driven styling for consistency at scale</li>
-				<li>Documentation that enables self-serve product teams</li>
-				<li>Clear accessibility and interaction rules</li>
+				<li>MySQL schema for users, departments, and products</li>
+				<li>PHP/PDO endpoints returning JSON</li>
+				<li>Accounts with salted, peppered password hashing</li>
+				<li>One-page storefront: browse, cart, checkout flow</li>
 			</ul>
 		</div>
 	</div>
@@ -241,7 +241,7 @@ footer{background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;ali
 
 
 <section class="proj-cta">
-	<p class="cta-text">Interested in building a consistent product system?</p>
+	<p class="cta-text">Need a store or web app built end to end?</p>
 	<a href="./index.html" class="cta-btn">Get in Touch →</a>
 </section>
 
